@@ -149,7 +149,7 @@ const CreatePin = () => {
                 className="w-20 h-15 rounded-[25px]"
                 alt="user-profile"
               />
-              <p className="font-bold">{user.userName || Guest}</p>
+              <p className="font-bold">{user.userName || "Guest"}</p>
             </div>
           )}
           <input
