@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoMdAdd, IoMdSearch } from 'react-icons/io';
+import user1 from '../assets/user.jpeg';
 
 const Navbar = ({ searchTerm, setSearchTerm }) => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
           className='hidden md:block'
         >
           {/* <img src={vee1} alt="user" className='w-14 h-12 mt-3 rounded-lg' /> */}
-          <img src={user?.image} alt="user-pic" className="w-14 h-12 mt-3 rounded-lg " />
+          <img src={user?.image || user1} alt="user-pic" className="w-14 h-12 mt-3 rounded-lg " />
         </Link>
 
         <Link

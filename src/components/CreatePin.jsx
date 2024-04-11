@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlineCloudUpload } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { MdDelete } from 'react-icons/md';
-
+import user1 from '../assets/user.jpeg';
 import { categories } from '../utils/data';
 import { client } from '../client';
 import Spinner from './Spinner';
@@ -56,11 +56,11 @@ const CreatePin = () => {
             _ref: imageAsset?._id,
           },
         },
-        // userId: user._id,
-        // postedBy: {
-        //   _type: 'postedBy',
-        //   _ref: user._id,
-        // },
+        userId: user._id,
+        postedBy: {
+          _type: 'postedBy',
+          _ref: user._id,
+        },
         category,
       };
       client.create(doc).then(() => {
@@ -145,11 +145,11 @@ const CreatePin = () => {
           {user && (
             <div className="flex gap-2 mt-2 mb-2 items-center bg-white- rounded-lg ">
               <img
-                src={user.image}
+                src={user.image || user1}
                 className="w-20 h-15 rounded-[25px]"
                 alt="user-profile"
               />
-              <p className="font-bold">{user.userName}</p>
+              <p className="font-bold">{user.userName || Guest}</p>
             </div>
           )}
           <input
