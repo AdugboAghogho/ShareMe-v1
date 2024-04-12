@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { MdDownloadForOffline } from 'react-icons/md';
@@ -13,6 +13,24 @@ import { CiHeart } from 'react-icons/ci';
 
 const Pin = ({ pin }) => {
   const [isActive, setIsActive] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
+  
+  const handleClick = () => {
+    setIsActive(!isActive);
+    setLikeCount(likeCount + 1);
+  };
+
+  useEffect(() => {
+    const storedCount = localStorage.getItem('likeCount');
+    if (storedCount) {
+      setLikeCount(parseInt(storedCount));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('likeCount', likeCount);
+  }, [likeCount]);
+
 
   const [postHovered, setPostHovered] = useState(false);
   const [savingPost, setSavingPost] = useState(false);
@@ -119,7 +137,7 @@ const Pin = ({ pin }) => {
         )}
       </div>
 
-      <div className="flex justify-between my-3">
+      <div className="flex justify-between -[5px]">
         <Link
           to={`/user-profile/${postedBy?._id}`}
           className="flex gap-2 mt-2 ml-[5px] items-center"
@@ -133,13 +151,15 @@ const Pin = ({ pin }) => {
           <p className="font-semibold capitalize">{postedBy?.userName || 'Guest'}</p>
         </Link>
 
-        <div className="mt-[10px] mr-[20px] heart" onClick={() => setIsActive(!isActive)}>
+        <div className="mt-[12px] mr-[20px] heart" onClick={handleClick}>
           {isActive ? (
-            <FaHeart className='w-[2.2rem] h-[2.2rem] heart' style={{ color: 'red' }} />
+            <FaHeart className='w-[1.9rem] h-[1.9rem] heart' style={{ color: 'red' }} />
           ) : (
             <CiHeart className='w-[2.7rem] h-[2.7rem]' />
           )}
+          {likeCount > 0 && <p className="like-count mr-[5px]">Likes {likeCount}</p>}
         </div>
+        
       </div>
 
 
