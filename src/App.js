@@ -6,11 +6,11 @@ import Home from './container/Home';
 const App = () => {
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     const user = JSON.parse(localStorage.getItem('user'));
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'));
   
-    //   if (!user) navigate('/login');
-    // }, []);
+      if (!user) navigate('/login');
+    }, []);
   
     return (
         <Routes>
