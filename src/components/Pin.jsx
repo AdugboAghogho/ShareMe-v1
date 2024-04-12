@@ -119,13 +119,13 @@ const Pin = ({ pin }) => {
         )}
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between my-3">
         <Link
           to={`/user-profile/${postedBy?._id}`}
           className="flex gap-2 mt-2 ml-[5px] items-center"
         >
           <img
-            className="w-8 h-8 rounded-full object-cover"
+            className="w-[3rem] h-[3rem] rounded-full object-cover"
             src={postedBy?.image || vee1} // Use vee1 as a default if postedBy?.image is undefined
             alt="user-profile"
           />
@@ -133,11 +133,11 @@ const Pin = ({ pin }) => {
           <p className="font-semibold capitalize">{postedBy?.userName || 'Guest'}</p>
         </Link>
 
-        <div className="mt-[7px] mr-[20px] heart" onClick={() => setIsActive(!isActive)}>
+        <div className="mt-[10px] mr-[20px] heart" onClick={() => setIsActive(!isActive)}>
           {isActive ? (
-            <FaHeart className='w-[1.9rem] h-[1.5rem] heart' style={{ color: 'red' }} />
+            <FaHeart className='w-[2.2rem] h-[2.2rem] heart' style={{ color: 'red' }} />
           ) : (
-            <CiHeart className='w-[1.9rem] h-[1.9rem]' />
+            <CiHeart className='w-[2.7rem] h-[2.7rem]' />
           )}
         </div>
       </div>

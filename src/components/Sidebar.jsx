@@ -9,7 +9,7 @@ import { categories } from '../utils/data';
 
 
 const isActiveStyle = 'bg-blue-200 h-[45px] shadow-lx flex items-center px-5 gap-3 font-extrabold border-r-2 border-black transition-all duration-200 ease-in-out capitalize '; // Updated isActiveStyle
-const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize';
+const isNotActiveStyle = 'flex items-center px-5 gap-3 text-black font-bold hover:text-black transition-all duration-200 ease-in-out capitalize';
 
 
 const Sidebar = ({ closeToggle }) => {
@@ -21,7 +21,7 @@ const Sidebar = ({ closeToggle }) => {
   const user = JSON.parse(localStorage.getItem('user'));
 
   return (
-    <div className='flex flex-col justify-between bg-blue-100 h-[100%] overflow-y-scrikk min-w-210 hide-scrollbar rounded-[25px]'>
+    <div className='flex flex-col justify-between bg-blue-100 pindetail h-[100%] overflow-y-scrikk min-w-210 hide-scrollbar rounded-[25px]'>
       <div className="flex flex-col">
         <Link
           to="/"
@@ -64,7 +64,7 @@ const Sidebar = ({ closeToggle }) => {
 
       <Link
         to={`user-profile/${user?._id}`}
-        className='flex my-5 mb-[2rem] gap-2 p-2 items-center bg-blue-200 rounded-lg shadow-lg mx-3'
+        className='flex my-5 mb-[4.5rem] gap-2 p-2 items-center bg-blue-200 rounded-lg shadow-lg mx-3 sm:mb-[10rem]'
         onClick={handleCloseSiderbar}
       >
         <img src={user?.image || user1} className="w-15 h-12 rounded-[25px]" alt="user-profile" />
